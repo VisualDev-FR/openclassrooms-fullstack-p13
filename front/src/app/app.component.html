@@ -1,1 +1,17 @@
-<router-outlet />
+<h2>Your Car Your Way - Chat POC</h2>
+
+<div>
+    <input type="text" placeholder="username" [(ngModel)]="username">
+    <button type="button" class="primary" (click)="connect()">Connect</button>
+</div>
+
+<div>
+    <input type="text" placeholder="Type a message..." [(ngModel)]="message" />
+    <button type="button" (click)="sendMessage()">Send</button>
+</div>
+
+<ul id="messageArea">
+    <li *ngFor="let message of messages">
+        {{ message.sender }}: {{ message.content }}
+    </li>
+</ul>

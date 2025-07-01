@@ -1,4 +1,4 @@
-package com.ycyw.demo;
+package com.ycyw.chat;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -12,14 +12,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic"); // Pour le broadcast
-        config.setApplicationDestinationPrefixes("/app"); // Pour les messages entrants
+        config.enableSimpleBroker("/topic");
+        config.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/chat") // Endpoint WebSocket
-                .setAllowedOrigins("*") // À adapter pour la prod
-                .withSockJS(); // Fallback pour navigateurs non compatibles
+        registry.addEndpoint("/chat")
+                .setAllowedOrigins("http://localhost:4200")
+                .withSockJS();
     }
 }
